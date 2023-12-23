@@ -66,7 +66,6 @@ class IngredienteController extends Controller
     }
 
 
-
     public function show($id){
 
         $ingrediente = Ingrediente::find($id);
