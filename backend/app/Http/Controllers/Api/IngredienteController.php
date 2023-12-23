@@ -104,7 +104,43 @@ class IngredienteController extends Controller
         }
     }
 
+    public function update(Request $request, int $id){
 
+        $validator = Validator::make($request->all(), [
+            'codigo' => 'required|integer', 
+            'descricao' => 'required|string|max:191'
+        ]);
+
+        if($validator->fails()){
+
+            return  response()->json([
+                'status' => 422,
+                'errors' => $validator->messages()
+            ], 422);
+        }else {
+
+            $ingrediente = Ingrediente::find($id);
+
+            if($ingrediente){
+
+                $ingrediente->update([
+                    'codigo' => $request->codigo,
+                    'descricao' => $request->descricao
+                ]);
+                
+                return response()->json([
+                    'status' => 200,
+                    'message' => "Ingrediente Atualizado com Sucesso"
+                ], 200);
+            }else{
+
+                return response()->json([
+                    'status' => 404,
+                    'message' => "Ingrediente não encontrado!"
+                ], 404);
+            }
+        }
+    }
 
 
 
