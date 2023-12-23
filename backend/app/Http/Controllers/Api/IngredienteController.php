@@ -67,6 +67,45 @@ class IngredienteController extends Controller
 
 
 
+    public function show($id){
+
+        $ingrediente = Ingrediente::find($id);
+        if($ingrediente){
+
+            return response()->json([
+                'status' => 200,
+                'ingrediente' => $ingrediente
+            ], 200);
+        }else{
+
+            return response()->json([
+                'status' => 404,
+                'message' => "Ingrediente não encontrado!"
+            ], 404);
+        }
+    }
+
+
+    public function edit($id){
+
+        $ingrediente = Ingrediente::find($id);
+        if($ingrediente){
+
+            return response()->json([
+                'status' => 200,
+                'ingrediente' => $ingrediente
+            ], 200);
+        }else{
+
+            return response()->json([
+                'status' => 404,
+                'message' => "Ingrediente não encontrado!"
+            ], 404);
+        }
+    }
+
+
+
 
 
 
