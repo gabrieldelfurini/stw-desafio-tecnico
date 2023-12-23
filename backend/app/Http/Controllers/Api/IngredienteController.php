@@ -142,9 +142,25 @@ class IngredienteController extends Controller
         }
     }
 
+    public function destroy($id){
 
+        $ingrediente = Ingrediente::find($id);
 
+        if($ingrediente){
 
+            $ingrediente->delete();
+            return response()->json([
+                'status' => 200,
+                'message' => "Ingrediente Excluído com Sucesso!"
+            ], 200);
+        }else{
+            
+            return response()->json([
+                'status' => 404,
+                'message' => "Ingrediente não encontrado!"
+            ], 404);
+        }
+    }
 
 }
 
