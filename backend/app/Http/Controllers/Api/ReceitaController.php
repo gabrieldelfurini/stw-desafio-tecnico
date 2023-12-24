@@ -3,22 +3,21 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Models\Ingrediente;
+use App\Models\Receita;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
-
-class IngredienteController extends Controller
+class ReceitaController extends Controller
 {
     public function index(){
 
-        $ingredientes = Ingrediente::all();
+        $receitas = Receita::all();
 
-        if($ingredientes->count() > 0){
+        if($receitas->count() > 0){
 
             return response()->json([
                 'status' => 200,
-                'ingredientes' => $ingredientes 
+                'receitas' => $receitas 
             ], 200);
         }else{
 
@@ -28,12 +27,11 @@ class IngredienteController extends Controller
             ],404);
         }
     }
-    
 
     public function store(Request $request){
         
         $validator = Validator::make($request->all(), [
-            'codigo' => 'required|integer|unique:ingredientes,codigo',
+            'codigo' => 'required|integer|unique:receitas,codigo',
             'descricao' => 'required|string|max:191'
         ]);
 
@@ -45,16 +43,16 @@ class IngredienteController extends Controller
             ], 422);
         }else {
 
-            $ingrediente = Ingrediente::create([
+            $receita = Receita::create([
                 'codigo' => $request->codigo,
                 'descricao' => $request->descricao
             ]);
 
-            if($ingrediente){
+            if($receita){
                 
                 return response()->json([
                     'status' => 200,
-                    'message' => "Ingrediente Criado Com Sucesso!"
+                    'message' => "Receita Criada Com Sucesso!"
                 ], 200);
             }else{
 
@@ -66,39 +64,38 @@ class IngredienteController extends Controller
         }
     }
 
-
     public function show($id){
 
-        $ingrediente = Ingrediente::find($id);
-        if($ingrediente){
+        $receita = Receita::find($id);
+        if($receita){
 
             return response()->json([
                 'status' => 200,
-                'ingrediente' => $ingrediente
+                'receita' => $receita
             ], 200);
         }else{
 
             return response()->json([
                 'status' => 404,
-                'message' => "Ingrediente não encontrado!"
+                'message' => "Receita não encontrada!"
             ], 404);
         }
     }
 
     public function edit($id){
 
-        $ingrediente = Ingrediente::find($id);
-        if($ingrediente){
+        $receita = Receita::find($id);
+        if($receita){
 
             return response()->json([
                 'status' => 200,
-                'ingrediente' => $ingrediente
+                'receita' => $receita
             ], 200);
         }else{
 
             return response()->json([
                 'status' => 404,
-                'message' => "Ingrediente não encontrado!"
+                'message' => "Receita não encontrada!"
             ], 404);
         }
     }
@@ -118,24 +115,24 @@ class IngredienteController extends Controller
             ], 422);
         }else {
 
-            $ingrediente = Ingrediente::find($id);
+            $receita = Receita::find($id);
 
-            if($ingrediente){
+            if($receita){
 
-                $ingrediente->update([
+                $receita->update([
                     'codigo' => $request->codigo,
                     'descricao' => $request->descricao
                 ]);
                 
                 return response()->json([
                     'status' => 200,
-                    'message' => "Ingrediente Atualizado com Sucesso"
+                    'message' => "Receita Atualizada com Sucesso"
                 ], 200);
             }else{
 
                 return response()->json([
                     'status' => 404,
-                    'message' => "Ingrediente não encontrado!"
+                    'message' => "Receita não encontrada!"
                 ], 404);
             }
         }
@@ -143,23 +140,23 @@ class IngredienteController extends Controller
 
     public function destroy($id){
 
-        $ingrediente = Ingrediente::find($id);
+        $receita = Receita::find($id);
 
-        if($ingrediente){
+        if($receita){
 
-            $ingrediente->delete();
+            $receita->delete();
             return response()->json([
                 'status' => 200,
-                'message' => "Ingrediente Excluído com Sucesso!"
+                'message' => "Receita Excluída com Sucesso!"
             ], 200);
         }else{
             
             return response()->json([
                 'status' => 404,
-                'message' => "Ingrediente não encontrado!"
+                'message' => "Receita não encontrada!"
             ], 404);
         }
     }
 
-}
 
+}
