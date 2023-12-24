@@ -23,13 +23,10 @@
                     <input type="text" class="form-control" v-model="model.receita.descricao"/>
                 </div>
 
-                
-
-
                 <div class="mb-3">
                     <label for="existingRecipes">Ingredientes</label>
-                    <select id="existingRecipes" class="form-select" v-model="selectedIngredientId">
-                        <option value="" disabled selected>Escolha um ingrediente existente</option>
+                    <select id="existingRecipes" class="form-select" v-model="selectedIngredientId" ref="existingRecipes">
+                        <option value="" disabled selected id="opcaoPadrao">Escolha um ingrediente existente</option>
 
                         <option v-for="ingrediente in ingredientesList" :key="ingrediente.id" :value="ingrediente.id">
                             {{ ingrediente.descricao }}
@@ -37,8 +34,6 @@
                     </select>
                     <button type="button" class="btn btn-outline-secondary mt-2" @click="adicionarIngrediente">Adicionar</button>
                 </div>
-
-
 
                 <table class="table table-bordered">
                     <thead>
@@ -51,39 +46,17 @@
                     </thead>
                     <tbody > <!-- v-if = "this.receitas.length > 0"-->
                         <tr v-for="(ingrediente, index) in this.model.receita.ingredientesAdicionados" :key="index"> <!--v-for="(receita, index) in this.receitas" :key = "index"-->
-                            <td> {{ ingrediente.descricao}} </td>
-                            <td> <input type="text"> </td>
-                            <td> <input type="text"> </td>
+                            <td> <p :class="'ingredienteId' + ingrediente.id">{{ ingrediente.descricao}}</p> </td>
+                            <td> <input type="text" :class="'qtdPrevista' + ingrediente.id" > </td>
+                            <td> <input type="text" :class= "'ordem' + ingrediente.id"> </td>
                             <td>
-                            <button type="buttom" class="btn btn-danger" @click="deletarReceita(receita.id)">Deletar</button>
+                            <button type="buttom" class="btn btn-danger" @click="deletarIngrediente(ingrediente.id)">Deletar</button>
                             </td>
                         </tr>
                     </tbody>
-                </table>
-
-
-
-                <!-- PROBLEMA PRINCIPAL: FAZER AQUELES INGREDIENTES APARECEREM NA TABELA -->
-
-
-                <!-- <div class="mb-3">
-                    <label>Ingredientes Adicionados:</label>
-                    <ul class="list-group">
-                        <li class="list-group-item" v-for="(ingrediente, index) in this.model.receita.ingredientesAdicionados" :key="index">
-                          <p>{{ ingrediente.descricao }}</p>
-
-                          <label for="qtdPrevista">Quantidade Prevista:</label>
-                          <input type="text" id="qtdPrevista">
-                          <label for="ordem">Ordem:</label>
-                          <input type="text" id="ordem">
-                          <button>Excluir</button>
-
-                        </li>
-                    </ul>
-                </div> -->
-
+                </table>    
                 
-
+                
                 <div class="mb-3">
                     <button type="button" @click="salvarReceita" class="btn btn-primary">Salvar</button>
                 </div>
@@ -102,6 +75,7 @@
                 errorList: {},
                 ingredientesList: [],
                 selectedIngredientId: '',
+                ingredientesSelecionados: [],
                 model: {
                     receita: {
                         codigo: '',
@@ -120,8 +94,24 @@
         methods: {
             salvarReceita(){
 
-                console.log(this.model.receita)
-                
+
+                //Pegando os valores de dentro dos campos do array e adicionando dentro do vetor certo
+                this.model.receita.ingredientesAdicionados.forEach(elemento => {
+                    let qtdPrevista = document.querySelector(`.qtdPrevista${elemento.id}`).value
+                    let ordem = document.querySelector(`.ordem${elemento.id}`).value
+
+                    let ingrediente = {
+                        ingredienteId: elemento.id,
+                        qtdPrevista, 
+                        ordem
+                    }
+
+                    this.ingredientesSelecionados.push(ingrediente)
+                });
+                //Adicionando no vetor já existente no model
+                this.model.receita.ingredientesAdicionados = this.ingredientesSelecionados;
+
+
                 var mythis = this;
                 axios.post('http://127.0.0.1:8000/api/receitas', this.model.receita)
                     .then(res => {
@@ -137,20 +127,20 @@
                         this.errorList = "";
                     })
                     .catch(function (error) {
-
                         if (error.response) {
-
                             if(error.response.status == 422){
-                                
                                 mythis.errorList = error.response.data.errors;
                             }
-                            
                         } else if (error.request) {
                             console.error(error.request);
                         } else {
                             console.error('Error', error.message);
                         }
-                    })
+                    })      
+                    
+                    
+                console.log(this.model.receita)
+
             },
 
             getIngredientesData(){
@@ -181,11 +171,27 @@
                         if(ingredienteRequisicao.id === ingredienteLista.id){
                             
                             let elementoRemovida = this.ingredientesList.splice(this.ingredientesList[ingredienteRequisicao.id], 1);
-                            console.log("Elemento removido: ", elementoRemovida)
                         }
-
                     })
                 });            
+            },
+
+            deletarIngrediente(ingredienteId){
+                //Tira da lista
+                let retirado = '';
+                for(let index = 0; index < this.model.receita.ingredientesAdicionados.length; index++){
+
+                    if(this.model.receita.ingredientesAdicionados[index].id === ingredienteId){
+
+                        retirado = this.model.receita.ingredientesAdicionados[index]
+                        this.model.receita.ingredientesAdicionados.splice(this.model.receita.ingredientesAdicionados[index], 1);
+                    }
+                }
+
+
+                        //DESAFIO: "Coloca" no select novamente
+                this.ingredientesList = this.ingredientesList.concat(retirado)
+                // console.log(this.ingredientesList)
             }
         }
     }
