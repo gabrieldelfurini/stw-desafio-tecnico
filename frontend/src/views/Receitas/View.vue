@@ -3,7 +3,7 @@
       <div class="card">
         <div class="card-header">
           <h4>Receitas</h4>
-          <RouterLink to="ingredientes/create" class="btn btn-primary float-end"> 
+          <RouterLink to="receitas/create" class="btn btn-primary float-end"> 
             Adicionar Receita
           </RouterLink>
         </div>
@@ -15,17 +15,17 @@
                 <th>Código</th>
                 <th>Descrição</th>
                 <th>Criado em</th>
-                <th>Action</th>
+                <th>Ações</th>
               </tr>
             </thead>
-            <tbody v-if = "this.ingredientes.length > 0">
-              <tr v-for="(ingrediente, index) in this.ingredientes" :key = "index">
-                <td> {{ ingrediente.codigo}} </td>
-                <td> {{ ingrediente.descricao}} </td>
-                <td> {{ ingrediente.created_at}} </td>
+            <tbody v-if = "this.receitas.length > 0">
+              <tr v-for="(receita, index) in this.receitas" :key = "index">
+                <td> {{ receita.codigo}} </td>
+                <td> {{ receita.descricao}} </td>
+                <td> {{ receita.created_at}} </td>
                 <td>
-                  <RouterLink class="btn btn-success" :to="{ path: '/ingredientes/' + ingrediente.id + '/edit' }">Editar</RouterLink>
-                  <button type="buttom" class="btn btn-danger" @click="deletarIngrediente(ingrediente.id)">Deletar</button>
+                  <RouterLink class="btn btn-success" :to="{ path: '/receitas/' + receita.id + '/edit' }">Editar</RouterLink>
+                  <button type="buttom" class="btn btn-danger" @click="deletarReceita(receita.id)">Deletar</button>
                 </td>
               </tr>
             </tbody>
@@ -48,24 +48,24 @@
       name: 'View',
       data() {
         return{
-          ingredientes: []
+          receitas: []
         }
       },
       mounted(){
   
-        this.getIngredientes();
+        this.getReceitas();
       },
       methods: {
   
-        deletarIngrediente(ingredienteId){
+        deletarReceita(receitaId){
   
-          if(confirm('Você tem certeza que deseja exlcuir esse ingrediente?!')){
+          if(confirm('Você tem certeza que deseja exlcuir essa receita?!')){
             
-            axios.delete(`http://127.0.0.1:8000/api/ingredientes/${ingredienteId}/delete`)
+            axios.delete(`http://127.0.0.1:8000/api/receitas/${receitaId}/delete`)
               .then(res => {
   
                 alert(res.data.message);
-                this.getIngredientes();
+                this.getReceitas();
               })
               .catch(function (error) {
   
@@ -78,11 +78,11 @@
           }
         },
   
-        getIngredientes(){
+        getReceitas(){
   
-          axios.get('http://127.0.0.1:8000/api/ingredientes').then(res => {
+          axios.get('http://127.0.0.1:8000/api/receitas').then(res => {
   
-            this.ingredientes = res.data.ingredientes;
+            this.receitas = res.data.receitas;
           });
         }
       }

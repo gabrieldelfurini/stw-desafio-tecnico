@@ -5,6 +5,9 @@ import CriarIngrediente from '../views/Ingredientes/Criar.vue'
 import EditarIngrediente from '../views/Ingredientes/Editar.vue'
 
 import ReceitaView from '../views/Receitas/View.vue'
+import CriarReceita from '../views/Receitas/Criar.vue'
+import EditarReceita from '../views/Receitas/Editar.vue'
+
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -19,6 +22,8 @@ const router = createRouter({
       name: 'about',
       component: () => import('../views/AboutView.vue')
     },
+    
+
     {
       path: '/ingredientes',
       name: 'ingredientes',
@@ -34,12 +39,23 @@ const router = createRouter({
       name: 'editarIngrediente',
       component: EditarIngrediente
     },
+
+    
     {
       path: '/receitas',
       name: 'receitas',
       component: ReceitaView
-    }
-
+    },
+    {
+      path: '/receitas/create',
+      name: 'criarReceita',
+      component: CriarReceita
+    },
+    {
+      path: '/receitas/:id/edit',
+      name: 'editarReceita',
+      component: EditarReceita
+    },
 
     
   ]

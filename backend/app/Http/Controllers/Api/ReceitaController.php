@@ -157,6 +157,4 @@ class ReceitaController extends Controller
             ], 404);
         }
     }
-
-
 }
