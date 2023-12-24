@@ -32,7 +32,8 @@ class ReceitaController extends Controller
         
         $validator = Validator::make($request->all(), [
             'codigo' => 'required|integer|unique:receitas,codigo',
-            'descricao' => 'required|string|max:191'
+            'descricao' => 'required|string|max:191',
+            'ingredientesAdicionados' => 'required'
         ]);
 
         if($validator->fails()){

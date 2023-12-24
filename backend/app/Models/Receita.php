@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Receita extends Model
 {
@@ -15,4 +16,8 @@ class Receita extends Model
         'codigo',
         'descricao'
     ];
+
+    public function ingredientes(){
+        $this->belongsToMany('App\Models\Ingrediente');
+    }
 }

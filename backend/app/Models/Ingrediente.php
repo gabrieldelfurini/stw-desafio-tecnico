@@ -16,4 +16,8 @@ class Ingrediente extends Model
         'descricao'
     ];
 
+    public function receitas(){
+        return $this->belongsToMany('App\Models\Receita');
+    }
+
 }

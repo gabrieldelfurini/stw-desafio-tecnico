@@ -1,6 +1,5 @@
 <?php
 
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -12,10 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('ingredientes', function (Blueprint $table) {
+        Schema::create('receita_ingredientes', function (Blueprint $table) {
             $table->id();
-            $table->integer('codigo');
-            $table->string('descricao');
+            
+            $table->foreignId('receita_id')->constrained();
+            $table->foreignId('ingrediente_id')->constrained();
+
+            $table->integer('ordem');
+            $table->float('quantidade_prevista');
             $table->timestamps();
         });
     }
@@ -25,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('ingredientes');
+        Schema::dropIfExists('receita_ingredientes');
     }
 };
