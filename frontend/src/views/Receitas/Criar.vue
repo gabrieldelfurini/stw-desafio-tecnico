@@ -100,6 +100,8 @@
                     let qtdPrevista = document.querySelector(`.qtdPrevista${elemento.id}`).value
                     let ordem = document.querySelector(`.ordem${elemento.id}`).value
 
+                    console.log("verificando o ingredienteId: ", elemento.id)
+                    
                     let ingrediente = {
                         ingredienteId: elemento.id,
                         qtdPrevista, 
@@ -111,6 +113,7 @@
                 //Adicionando no vetor já existente no model
                 this.model.receita.ingredientesAdicionados = this.ingredientesSelecionados;
 
+                console.log("Vendo os tipos de dados: ", this.model.receita)
 
                 var mythis = this;
                 axios.post('http://127.0.0.1:8000/api/receitas', this.model.receita)
@@ -139,7 +142,7 @@
                     })      
                     
                     
-                console.log(this.model.receita)
+                
 
             },
 

@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Receita;
+use App\Models\ReceitaIngrediente;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
 
 class ReceitaController extends Controller
@@ -44,11 +46,30 @@ class ReceitaController extends Controller
             ], 422);
         }else {
 
+            Log::info('Dados recebidos no backend:', ['data' => $request->all()]);
+
             $receita = Receita::create([
                 'codigo' => $request->codigo,
                 'descricao' => $request->descricao
             ]);
 
+
+            // Aqui fazer a parte para poder preencher aquelas tabelas
+            $receitaId = $receita->id;
+            foreach ($request->ingredientesAdicionados as $ingrediente) { 
+                if (is_array($ingrediente)) {
+                    ReceitaIngrediente::create([
+                        'receita_id' => $receitaId,
+                        'ingrediente_id' => $ingrediente['ingredienteId'],
+                        'ordem' => $ingrediente['ordem'],
+                        'quantidade_prevista' => $ingrediente['qtdPrevista']
+                    ]);
+                
+                }else{
+                    Log::info('Não é array.', ['ingrediente' => $ingrediente, 'tipo' => gettype($ingrediente)]);
+                }
+            }
+            
             if($receita){
                 
                 return response()->json([
@@ -59,7 +80,8 @@ class ReceitaController extends Controller
 
                 return response()->json([
                     'status' => 500,
-                    'message' => "Aconteceu algo errado!"
+                    'message' => "Aconteceu algo errado!",
+                    'conteudo_ingredientes'=> $request->ingredientesAdicionados
                 ], 500);
             }
         }

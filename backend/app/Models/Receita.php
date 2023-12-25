@@ -17,7 +17,14 @@ class Receita extends Model
         'descricao'
     ];
 
-    public function ingredientes(){
+    /*public function ingredientes(){
         $this->belongsToMany('App\Models\Ingrediente');
+    }*/
+
+    public function ingredientes()
+    {
+        return $this->belongsToMany(Ingrediente::class, 'ingrediente_receita')
+            ->withPivot('ordem', 'quantidade_prevista')
+            ->withTimestamps();
     }
 }
