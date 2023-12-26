@@ -45,7 +45,7 @@
                         </tr>
                     </thead>
                     <tbody > <!-- v-if = "this.receitas.length > 0"-->
-                        <tr v-for="(ingrediente, index) in this.model.receita.ingredientesAdicionados" :key="index"> <!--v-for="(receita, index) in this.receitas" :key = "index"-->
+                        <tr v-for="(ingrediente, index) in this.model.receita.ingredientesAdicionados" :key="index">
                             <td> <p :class="'ingredienteId' + ingrediente.id">{{ ingrediente.descricao}}</p> </td>
                             <td> <input type="text" :class="'qtdPrevista' + ingrediente.id" > </td>
                             <td> <input type="text" :class= "'ordem' + ingrediente.id"> </td>
@@ -140,10 +140,6 @@
                             console.error('Error', error.message);
                         }
                     })      
-                    
-                    
-                
-
             },
 
             getIngredientesData(){

@@ -28,7 +28,6 @@ class IngredienteController extends Controller
             ],404);
         }
     }
-    
 
     public function store(Request $request){
         
@@ -65,7 +64,6 @@ class IngredienteController extends Controller
             }
         }
     }
-
 
     public function show($id){
 

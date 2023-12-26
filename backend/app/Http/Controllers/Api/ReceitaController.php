@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Models\Ingrediente;
 use App\Models\Receita;
 use App\Models\ReceitaIngrediente;
 use Illuminate\Http\Request;
@@ -45,8 +46,6 @@ class ReceitaController extends Controller
                 'errors' => $validator->messages()
             ], 422);
         }else {
-
-            Log::info('Dados recebidos no backend:', ['data' => $request->all()]);
 
             $receita = Receita::create([
                 'codigo' => $request->codigo,
@@ -108,11 +107,44 @@ class ReceitaController extends Controller
     public function edit($id){
 
         $receita = Receita::find($id);
-        if($receita){
+        
+        $ingredientesSelecionados = $receita->ingredientes; // Agora pegar ingredientes relacionados
+        $todosOsIngredientes = Ingrediente::all()->toArray();
+
+        //Logica para retirar os ingredientes que ja foram selecionados        
+        $ingredientesNaoSelecionados = array_filter($todosOsIngredientes, function($ingrediente) use ($ingredientesSelecionados) {
+            foreach ($ingredientesSelecionados as $ingredienteSelecionado) {
+                if ($ingredienteSelecionado['id'] == $ingrediente['id']) {
+                    return false; // Já foi selecionado, então remove do array final
+                }
+            }
+            return true; // Não foi selecionado
+        });
+
+        //Logica para relacionar os ingredientes com seus respectivos dados
+        $dadosIngredientes = [];
+        foreach ($ingredientesSelecionados as $ingredienteSelecionado) {
+            $ingrediente = [
+                'ingrediente'=> $ingredienteSelecionado,
+                'ordem'=> $ingredienteSelecionado->pivot->ordem,
+                'qtdPrevista'=> $ingredienteSelecionado->pivot->quantidade_prevista
+            ];
+
+            array_push($dadosIngredientes, $ingrediente); 
+        }
+
+        $dadosReceitaComIngredientes = [
+            'receita' => $receita,
+            'ingredientesNaoSelecionados' => $ingredientesNaoSelecionados,
+            'dadosIngredientesSelecionados' => $dadosIngredientes
+        ];
+
+
+        if($receita){ // DEPOIS POSSO TROCAR PRA VERRIFICAR OS DOIS ELEMENTOS DESSE ARRAY
 
             return response()->json([
                 'status' => 200,
-                'receita' => $receita
+                'dadosReceitaComIngredientes' => $dadosReceitaComIngredientes
             ], 200);
         }else{
 
