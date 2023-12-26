@@ -24,10 +24,8 @@ A aplicação deve ter as seguintes funcionalidades:
 # Sumário
 
 - [Tecnologias utilizadas](#tecnologias-utilizadas)
-- [Ferramentas necessárias](#ferramentas-necessárias)
-- [Rodando no servidor local](#rodando-no-servidor-local)
-- [Orientações de como utilizar](#orientações-de-como-utilizar)
-- [Habilidades desenvolvidas](#habilidades-desenvolvidas)
+- [Como Utilizar](#como-utilizar)
+- [Um pouco sobre minha experiência](#um-pouco-sobre-minha-experiência)
 
   ---
 
@@ -50,35 +48,35 @@ A aplicação deve ter as seguintes funcionalidades:
 ## Ferramentas necessárias
 
  * Para rodar o projeto, você vai precisar instalar as seguintes ferramentas:
-[XAMPP](https://www.apachefriends.org/pt_br/index.html) (que vai trazer alguns programas como o PHP)
-* Um editor para trabalhar com o código como [VSCode](https://code.visualstudio.com/) ou outro de sua preferência;
+[XAMPP](https://www.apachefriends.org/pt_br/index.html) (que vai trazer alguns programas, como o PHP);
+* Um editor para trabalhar com o código como [VSCode](https://code.visualstudio.com/);
 
  ## Rodando no servidor local
 
 - Dentro do painel do "XAMPP":
   - Clicar em "start", tanto no "Apache" quanto no "MySQL". Que deverá ficar assim:
-  - (imagem)
+  - (imagens/telaXAMP.jpg)
 
  - Clone do Projeto
 
-    - Clone este repositório dentro de um pasta que esteja dentro desse caminho: C:\xampp\htdocs
-    git clone https://github.com/LeandroGoerck/desafio-stw.git
+    - Clone este repositório dentro de um pasta que esteja dentro desse caminho: "C:\xampp\htdocs"
+    (git clone https://github.com/LeandroGoerck/desafio-stw.git)
     
-    - Configure o Banco de Dados
-  - No terminal do XAMPP aperte no botão "Admin" na coluna da opção "MySQL";
-  - Dentro do phpMyAdmin, crie uma base de dados com o nome que desejar;
-  - Dentro da pasta "backend" acesse o arquivo ".env", e renomeie o valor de "DB_DATABASE" passando o nome daquele que você criou;
-  - (./imagem/bancoDeDados.png) 
+  - Configure o Banco de Dados
+    - No terminal do XAMPP aperte no botão "Admin" na coluna da opção "MySQL";
+    - Dentro do phpMyAdmin, crie uma base de dados com o nome que desejar;
+    - Dentro da pasta "backend" acesse o arquivo ".env", e renomeie o valor de "DB_DATABASE" passando o nome daquele que você criou;
+    - (imagem/bancoDeDados.png) 
     
  - Inicie o sistema:
 
-    - Inicie o backend:
-    cd backend && php artisan serve
+    - Dentro de um terminal, inicie o backend:
+   cd backend && php artisan serve
 
     - Em outro terminal, inicie o frontend:
-    cd frontend && npm start
+    cd frontend && npm run dev
 
-    Abra no navegador os links que aparecem nos dois terminais. Eles devem ser algo como "http://localhost/..."
+    Agora Abra no navegador os links que aparecem nos dois terminais. Eles devem ser algo como "http://localhost/..."
 
 ---
 
