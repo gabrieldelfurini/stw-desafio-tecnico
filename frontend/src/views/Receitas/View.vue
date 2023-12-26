@@ -1,5 +1,5 @@
 <template>
-    <div class="container">
+    <div class="container mt-5">
       <div class="card">
         <div class="card-header">
           <h4>Receitas</h4>
@@ -14,7 +14,7 @@
               <tr>
                 <th>Código</th>
                 <th>Descrição</th>
-                <th>Criado em</th>
+                <th>Data de Criação</th>
                 <th>Ações</th>
               </tr>
             </thead>
@@ -22,10 +22,10 @@
               <tr v-for="(receita, index) in this.receitas" :key = "index">
                 <td> {{ receita.codigo}} </td>
                 <td> {{ receita.descricao}} </td>
-                <td> {{ receita.created_at}} </td>
-                <td>
-                  <RouterLink class="btn btn-success" :to="{ path: '/receitas/' + receita.id + '/edit' }">Editar</RouterLink>
-                  <button type="buttom" class="btn btn-danger" @click="deletarReceita(receita.id)">Deletar</button>
+                <td> {{ formatarData(receita.created_at)}} </td>
+                <td class="botoesAdicionarDeletar">
+                  <RouterLink class="btn btn-success" :to="{ path: '/receitas/' + receita.id + '/edit' }">Ver mais...</RouterLink>
+                  <button type="buttom" class="btn btn-danger" @click="deletarReceita(receita.id)">Excluir</button>
                 </td>
               </tr>
             </tbody>
@@ -59,7 +59,7 @@
   
         deletarReceita(receitaId){
   
-          if(confirm('Você tem certeza que deseja exlcuir essa receita?!')){
+          if(confirm('Você tem certeza que deseja excluir essa receita?!')){
             
             axios.delete(`http://127.0.0.1:8000/api/receitas/${receitaId}/delete`)
               .then(res => {
@@ -84,8 +84,12 @@
   
             this.receitas = res.data.receitas;
           });
+        },
+
+        formatarData(timestamp) {
+          const data = new Date(timestamp);
+          return data.toLocaleString();
         }
       }
     }
-  </script>
-  
+  </script>  

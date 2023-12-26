@@ -35,7 +35,7 @@
                     <thead>
                         <tr>
                             <th>Ingrediente</th>
-                            <th>Quantidade Prevista</th>
+                            <th>Previsto em Kg</th>
                             <th>Ordem</th>
                             <th>Ações</th>
                         </tr>
@@ -58,9 +58,7 @@
                 </table>
                 <div class="botoes">
                     <div class="mb-3">
-                    <button type="button" @click="atualizarReceita" class="btn btn-primary">Atualizar</button>
-                    </div>
-                    <div class="mb-3">
+                        <button type="button" @click="atualizarReceita" class="btn btn-primary">Atualizar</button>
                         <a type="button" class="btn btn-primary" href="/">Cancelar</a>
                     </div>
                 </div>
@@ -208,8 +206,6 @@
                     console.log("É array?:", Array.isArray([...this.ingredientesNaoSelecionados]))
 
 
-
-
                     for (const chave in this.ingredientesNaoSelecionados) {
                         console.log(chave); 
                         console.log(this.ingredientesNaoSelecionados[chave].id);
@@ -219,7 +215,7 @@
                         }
                     }
 
-                    // Depois de usar "delete", parece que o index continuar presente, mas sem o valor. Então pensei na solução abaixo para resolver esse problema
+                    // Depois de usar "delete", parece que o index continua presente, mas sem o valor. Então pensei na solução abaixo para resolver esse problema
                     let vetorAuxiliar = [];
                     for(let index = 0; index < this.ingredientesNaoSelecionados.length; index++){
                         if(this.ingredientesNaoSelecionados[index]){
@@ -227,7 +223,9 @@
                         }
                     }
                     this.ingredientesNaoSelecionados = vetorAuxiliar;
-
+                    
+                    //Voltar esse valor para nada para ter que escolher outro index quando for adicionar novamente
+                    this.selectedIngredientId = "";
                 });
             },
 

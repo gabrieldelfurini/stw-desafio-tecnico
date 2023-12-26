@@ -9,7 +9,7 @@ import HelloWorld from "./components/HelloWorld.vue";
       <div class="wrapper">
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
           <div class="container">
-            <RouterLink class="navbar-brand" to="/">Navbar</RouterLink>
+            <RouterLink class="navbar-brand" to="/">STW</RouterLink>
             <button
               class="navbar-toggler"
               type="button"

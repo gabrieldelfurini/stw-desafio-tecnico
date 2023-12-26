@@ -22,8 +22,11 @@
                     <label for="">Descrição</label>
                     <input type="text" class="form-control" v-model="model.ingrediente.descricao"/>
                 </div>
-                <div class="mb-3">
-                    <button type="button" @click="atualizarIngrediente" class="btn btn-primary">Atualizar</button>
+                <div class="botoes">
+                    <div class="mb-3">
+                        <button type="button" @click="atualizarIngrediente" class="btn btn-primary">Atualizar</button>
+                        <a type="button" class="btn btn-primary" href="/">Cancelar</a>
+                    </div>
                 </div>
             </div>
         </div>    
@@ -109,3 +112,17 @@
         }
     }
 </script>
+
+<style>
+    .botoes{
+        display: flex;
+        align-items: center;
+    }
+    button{
+        margin: 5px;
+    }
+    a{
+        margin: 0px;
+    }
+
+</style>

@@ -39,7 +39,7 @@
                     <thead>
                         <tr>
                             <th>Ingrediente</th>
-                            <th>Quantidade Prevista</th>
+                            <th>Previsto em Kg</th>
                             <th>Ordem</th>
                             <th>Ações</th>
                         </tr>
@@ -160,7 +160,8 @@
                     }
                 });
                 
-                //Tirar ingrediente da lista quando for selecionado
+                this.selectedIngredientId = "";
+                //Tirar ingrediente da lista (select) quando for selecionado
                 this.tirarIngredienteDaLista();
             },
 
@@ -189,9 +190,7 @@
                 }
 
 
-                        //DESAFIO: "Coloca" no select novamente
                 this.ingredientesList = this.ingredientesList.concat(retirado)
-                // console.log(this.ingredientesList)
             }
         }
     }

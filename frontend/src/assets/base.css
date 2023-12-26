@@ -57,3 +57,17 @@
   margin: 0;
   font-weight: normal;
 }
+
+.botoesAdicionarDeletar{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+td{
+  vertical-align: middle;
+}
+
+.card-header{
+  display: flex;
+  justify-content: space-between;
+}
