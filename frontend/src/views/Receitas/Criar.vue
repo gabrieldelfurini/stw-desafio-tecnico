@@ -113,7 +113,7 @@
                 //Adicionando no vetor já existente no model
                 this.model.receita.ingredientesAdicionados = this.ingredientesSelecionados;
 
-                console.log("Vendo os tipos de dados: ", this.model.receita)
+                console.log("Os valores que vao pro backend: ", this.model.receita)
 
                 var mythis = this;
                 axios.post('http://127.0.0.1:8000/api/receitas', this.model.receita)
@@ -144,7 +144,8 @@
 
             getIngredientesData(){
 
-                axios.get('http://127.0.0.1:8000/api/ingredientes').then(res => {
+                axios.get('http://127.0.0.1:8000/api/ingredientes')
+                .then(res => {
                 
                     this.ingredientesList = res.data.ingredientes;
 

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Ingrediente;
 use App\Models\Receita;
 use App\Models\ReceitaIngrediente;
+use Hamcrest\Arrays\IsArray;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
@@ -159,7 +160,8 @@ class ReceitaController extends Controller
 
         $validator = Validator::make($request->all(), [
             'codigo' => 'required|integer', 
-            'descricao' => 'required|string|max:191'
+            'descricao' => 'required|string|max:191',
+            'ingredientesSelecionados' => 'required'
         ]);
 
         if($validator->fails()){
@@ -178,6 +180,22 @@ class ReceitaController extends Controller
                     'codigo' => $request->codigo,
                     'descricao' => $request->descricao
                 ]);
+
+
+                //Lógica para atualizar os ingredientes relacionados e sua informações
+                $receitaId = $receita->id;
+                foreach ($request->ingredientesSelecionados as $ingrediente) {
+                    $ingredienteId = $ingrediente['ingredienteId'];
+            
+                    ReceitaIngrediente::updateOrCreate(
+                        ['receita_id' => $receitaId, 'ingrediente_id' => $ingredienteId],
+                        [
+                            'ordem' => $ingrediente['ordem'],
+                            'quantidade_prevista' => $ingrediente['qtdPrevista']
+                        ]
+                    );
+                }
+
                 
                 return response()->json([
                     'status' => 200,
