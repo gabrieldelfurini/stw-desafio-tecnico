@@ -26,7 +26,7 @@
 ## Ferramentas necessárias
 
  * Para rodar o projeto, você vai precisar instalar as seguintes ferramentas:
-[XAMPP](https://www.apachefriends.org/pt_br/index.html) (que vai trazer alguns programas, como o PHP);
+[XAMPP](https://www.apachefriends.org/pt_br/index.html) (que vai trazer algumas ferramentas, como o PHP);
 * Um editor para trabalhar com o código como [VSCode](https://code.visualstudio.com/);
 
  ## Rodando no servidor local
@@ -54,20 +54,20 @@
     - Em outro terminal, inicie o frontend:
     cd frontend && npm run dev
 
-    Agora Abra no navegador os links que aparecem nos dois terminais. Eles devem ser algo como "http://localhost/..."
+    Agora abra no navegador os links que aparecem nos dois terminais. Eles devem ser algo como "http://localhost/..."
 
 ---
 
   # Um pouco sobre minha experiência
-Foi um grande desafio pra mim, já que eu nunca tinha entrado em contato com PHP, Laravel e Vue.js. Eu já tinha visto alguns conteúdos sobre essas tecnologias mas nada algo muito profundo como foi nesse projeto. Tive que me organizar de forma a poder conseguir estudar o básico para conseguir pelo menos entregar um projeto funcional. 
+Foi um grande desafio pra mim, já que eu **nunca tinha entrado em contato com PHP, Laravel e Vuejs.** Eu já tinha visto alguns conteúdos sobre essas tecnologias mas nada algo muito profundo como foi nesse projeto. **Tive que me organizar de forma a poder conseguir estudar o básico para conseguir pelo menos entregar um projeto funcional.**
 
-Então dividi meus 3 primeiros dias para estudar as tecnologias que não conhecia profundamente (separei um dia pra cada). E depois foquei no desenvolvimento do projeto mesmo, pesquisando bastante até encontrar a solução de um problema que havia encontrado, ou para poder terminar alguma funcionalidade que não tinha muita noção de como implementar.
+Então dividi meus 3 primeiros dias para **estudar as tecnologias que não conhecia profundamente (separei um dia pra cada).** E depois foquei no desenvolvimento do projeto mesmo, pesquisando bastante **até encontrar a solução de um problema que havia encontrado, ou para poder terminar alguma funcionalidade** que não tinha muita noção de como implementar.
 
-Sobre os diferenciais, quase consegui fazer todos eles. Quase consegui concluir a autenticação, já que no curso que vi sobre Laravel eu escutei sobre o "Laravel Jetstream". Mas como deixei essa funcionalidade pro final do projeto, acabei que não tive todo o tempo necessário pra poder me dedicar a construir ela (principalmente o tempo para solucionar os problemas que poderiam ser causados se eu instalasse essa ferramenta).
+Sobre os diferenciais, quase consegui fazer todos eles. Quase consegui concluir a autenticação, já que no curso que vi sobre Laravel eu escutei sobre o **"Laravel Jetstream".** Mas como deixei essa funcionalidade pro final do projeto, acabei que não tive todo o tempo necessário pra poder me dedicar a construir ela (principalmente o tempo para solucionar os problemas que poderiam ser causados se eu instalasse essa ferramenta); então optei por não construí-la.
 
-Eu já escutei que as principais habilidades de um programador são: resolução de problemas, criatividade, comunicação e resiliência. Acho que pude provar pra mim mesmo que eu possuo essas habilidades, além de poder ter melhorado elas durante esse projeto; porque como falei, foi um dos maiores desafios que já fiz em relação à programação. Mas eu também fico animado porque penso no que eu posso fazer, tendo em vista esse desafio que terminei (saindo praticamente do zero), nesse pouco período de tempo. 
+Eu já escutei que as principais habilidades de um programador são: **resolução de problemas, criatividade, comunicação e resiliência.** Acho que pude provar pra mim mesmo que eu **possuo essas habilidades,** além de poder ter melhorado elas durante esse projeto; porque como falei, foi um dos maiores desafios que já fiz em relação à programação. Mas eu também fico animado porque **penso no que eu posso fazer, tendo em vista esse desafio que terminei (saindo praticamente do zero), nesse pouco período de tempo.**
 
-E também queria agradecer pela oportunidade de participar desse processo.
+E também queria agradecer pela **oportunidade** de participar desse processo.
 
 
 
