@@ -6,8 +6,6 @@
 - [Como Utilizar](#como-utilizar)
 - [Um pouco sobre minha experiência](#um-pouco-sobre-minha-experiência)
 
-  ---
-
 # Tecnologias utilizadas
 
 - [Laravel](https://laravel.com/)
