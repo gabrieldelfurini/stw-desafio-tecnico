@@ -170,6 +170,9 @@ export default {
           };
 
           this.errorList = "";
+
+          //Redireciona para outra tela
+          window.location.href = '/receitas';
         })
         .catch(function (error) {
           if (error.response) {

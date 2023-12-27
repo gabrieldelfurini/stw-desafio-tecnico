@@ -124,7 +124,7 @@
             >
               Atualizar
             </button>
-            <a type="button" class="btn btn-primary" href="/">Cancelar</a>
+            <a type="button" class="btn btn-primary" href="/receitas">Cancelar</a>
           </div>
         </div>
       </div>
@@ -214,6 +214,9 @@ export default {
           alert(res.data.message);
 
           this.errorList = "";
+
+          //Redireciona para outra tela
+          window.location.href = '/receitas';
         })
         .catch(function (error) {
           if (error.response) {

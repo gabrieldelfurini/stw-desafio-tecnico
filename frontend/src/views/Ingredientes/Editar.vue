@@ -43,7 +43,7 @@
             >
               Atualizar
             </button>
-            <a type="button" class="btn btn-primary" href="/">Cancelar</a>
+            <a type="button" class="btn btn-primary" href="/ingredientes">Cancelar</a>
           </div>
         </div>
       </div>
@@ -103,6 +103,9 @@ export default {
           alert(res.data.message);
 
           this.errorList = "";
+
+          //Redireciona para outra tela
+          window.location.href = '/ingredientes';
         })
         .catch(function (error) {
           if (error.response) {

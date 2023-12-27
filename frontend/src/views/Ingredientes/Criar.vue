@@ -40,7 +40,7 @@
             @click="salvarIngrediente"
             class="btn btn-primary"
           >
-            Save
+            Salvar
           </button>
         </div>
       </div>
@@ -79,6 +79,9 @@ export default {
           };
 
           this.errorList = "";
+
+          //Redireciona para outra tela
+          window.location.href = '/ingredientes';
         })
         .catch(function (error) {
           if (error.response) {
