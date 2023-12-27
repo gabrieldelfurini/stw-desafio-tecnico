@@ -23,18 +23,20 @@ import HelloWorld from "./components/HelloWorld.vue";
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-
                 <li class="nav-item">
                   <RouterLink class="nav-link active" to="/">Home</RouterLink>
                 </li>
                 <li class="nav-item">
-                  <RouterLink class="nav-link" to="/receitas">Receitas</RouterLink>
+                  <RouterLink class="nav-link" to="/receitas"
+                    >Receitas</RouterLink
+                  >
                 </li>
                 <li class="nav-item">
-                  <RouterLink class="nav-link" to="/ingredientes">Ingredientes</RouterLink>
-                </li>              
+                  <RouterLink class="nav-link" to="/ingredientes"
+                    >Ingredientes</RouterLink
+                  >
+                </li>
               </ul>
-              
             </div>
           </div>
         </nav>

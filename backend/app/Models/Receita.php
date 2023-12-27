@@ -10,16 +10,12 @@ class Receita extends Model
 {
     use HasFactory;
 
-    protected $table = "receitas"; 
+    protected $table = "receitas";
 
     protected $fillable = [
         'codigo',
         'descricao'
     ];
-
-    /*public function ingredientes(){
-        $this->belongsToMany('App\Models\Ingrediente');
-    }*/
 
     public function ingredientes()
     {

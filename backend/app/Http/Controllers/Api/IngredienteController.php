@@ -10,52 +10,54 @@ use Illuminate\Support\Facades\Validator;
 
 class IngredienteController extends Controller
 {
-    public function index(){
+    public function index()
+    {
 
         $ingredientes = Ingrediente::all();
 
-        if($ingredientes->count() > 0){
+        if ($ingredientes->count() > 0) {
 
             return response()->json([
                 'status' => 200,
-                'ingredientes' => $ingredientes 
+                'ingredientes' => $ingredientes
             ], 200);
-        }else{
+        } else {
 
             return response()->json([
                 'status' => 404,
                 'message' => 'Nenhum registro encontrado'
-            ],404);
+            ], 404);
         }
     }
 
-    public function store(Request $request){
-        
+    public function store(Request $request)
+    {
+
         $validator = Validator::make($request->all(), [
             'codigo' => 'required|integer|unique:ingredientes,codigo',
             'descricao' => 'required|string|max:191'
         ]);
 
-        if($validator->fails()){
+        if ($validator->fails()) {
 
             return response()->json([
                 'status' => 422,
                 'errors' => $validator->messages()
             ], 422);
-        }else {
+        } else {
 
             $ingrediente = Ingrediente::create([
                 'codigo' => $request->codigo,
                 'descricao' => $request->descricao
             ]);
 
-            if($ingrediente){
-                
+            if ($ingrediente) {
+
                 return response()->json([
                     'status' => 200,
                     'message' => "Ingrediente Criado Com Sucesso!"
                 ], 200);
-            }else{
+            } else {
 
                 return response()->json([
                     'status' => 500,
@@ -65,16 +67,17 @@ class IngredienteController extends Controller
         }
     }
 
-    public function show($id){
+    public function show($id)
+    {
 
         $ingrediente = Ingrediente::find($id);
-        if($ingrediente){
+        if ($ingrediente) {
 
             return response()->json([
                 'status' => 200,
                 'ingrediente' => $ingrediente
             ], 200);
-        }else{
+        } else {
 
             return response()->json([
                 'status' => 404,
@@ -83,16 +86,17 @@ class IngredienteController extends Controller
         }
     }
 
-    public function edit($id){
+    public function edit($id)
+    {
 
         $ingrediente = Ingrediente::find($id);
-        if($ingrediente){
+        if ($ingrediente) {
 
             return response()->json([
                 'status' => 200,
                 'ingrediente' => $ingrediente
             ], 200);
-        }else{
+        } else {
 
             return response()->json([
                 'status' => 404,
@@ -101,35 +105,36 @@ class IngredienteController extends Controller
         }
     }
 
-    public function update(Request $request, int $id){
+    public function update(Request $request, int $id)
+    {
 
         $validator = Validator::make($request->all(), [
-            'codigo' => 'required|integer', 
+            'codigo' => 'required|integer',
             'descricao' => 'required|string|max:191'
         ]);
 
-        if($validator->fails()){
+        if ($validator->fails()) {
 
             return  response()->json([
                 'status' => 422,
                 'errors' => $validator->messages()
             ], 422);
-        }else {
+        } else {
 
             $ingrediente = Ingrediente::find($id);
 
-            if($ingrediente){
+            if ($ingrediente) {
 
                 $ingrediente->update([
                     'codigo' => $request->codigo,
                     'descricao' => $request->descricao
                 ]);
-                
+
                 return response()->json([
                     'status' => 200,
                     'message' => "Ingrediente Atualizado com Sucesso"
                 ], 200);
-            }else{
+            } else {
 
                 return response()->json([
                     'status' => 404,
@@ -139,25 +144,24 @@ class IngredienteController extends Controller
         }
     }
 
-    public function destroy($id){
+    public function destroy($id)
+    {
 
         $ingrediente = Ingrediente::find($id);
 
-        if($ingrediente){
+        if ($ingrediente) {
 
             $ingrediente->delete();
             return response()->json([
                 'status' => 200,
                 'message' => "Ingrediente Excluído com Sucesso!"
             ], 200);
-        }else{
-            
+        } else {
+
             return response()->json([
                 'status' => 404,
                 'message' => "Ingrediente não encontrado!"
             ], 404);
         }
     }
-
 }
-

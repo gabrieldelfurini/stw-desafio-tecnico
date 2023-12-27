@@ -1,25 +1,4 @@
 # Desafio-STW
-A produção de uma fábrica de farinhas trabalha diariamente com diversos tipos de receitas.
-Essas receitas possuem um conjunto de ingredientes que devem ser consumidos na ordem em que foram salvos.
-Atualmente as receitas já estão organizadas em planilhas do Excel e são impressas sempre que uma receita é finalizada.
-O desafio é implementar o frontend e backend de uma aplicação web para cadastro de receitas para eliminar a impressão em papel e facilitar o gerenciamento das mesmas.
-
-
-A aplicação deve ter as seguintes funcionalidades:
-1. Receitas
-  - [x] Listar receitas
-  - [x] Listar uma determinada receita com seus respectivos ingredientes
-  - [x] Adicionar uma nova receita com seus respectivos ingredientes
-  - [x] Atualizar uma receita com seus respectivos ingredientes
-  - [x] Excluir uma receita
-
-2. Ingredientes
-  - [x] Listar os ingredientes
-  - [x] Adicionar um novo ingrediente
-  - [x] Atualizar um ingrediente
-  - [x] Excluir um ingrediente
-
----
 
 # Sumário
 
@@ -31,7 +10,6 @@ A aplicação deve ter as seguintes funcionalidades:
 
 # Tecnologias utilizadas
 
-- [Postman](https://www.postman.com/)
 - [Laravel](https://laravel.com/)
 - [PHP](https://www.php.net/)
 - [Vue.js](https://vuejs.org/)
@@ -40,7 +18,7 @@ A aplicação deve ter as seguintes funcionalidades:
 - [CSS](https://developer.mozilla.org/pt-BR/docs/Web/CSS)
 - [MySQL](https://www.mysql.com/)
 - [XAMPP](https://www.apachefriends.org/pt_br/index.html)
-
+- [Postman](https://www.postman.com/)
 ---
 
 # Como utilizar
@@ -55,18 +33,18 @@ A aplicação deve ter as seguintes funcionalidades:
 
 - Dentro do painel do "XAMPP":
   - Clicar em "start", tanto no "Apache" quanto no "MySQL". Que deverá ficar assim:
-  - (imagens/telaXAMP.jpg)
+  - <img src="./imagens/telaXAMP.png" alt="Banco de Dados Bonito" width="500"/>
 
  - Clone do Projeto
 
     - Clone este repositório dentro de um pasta que esteja dentro desse caminho: "C:\xampp\htdocs"
-    (git clone https://github.com/LeandroGoerck/desafio-stw.git)
+    (git clone https://github.com/gabrieldelfurini/stw-desafio-tecnico.git)
     
   - Configure o Banco de Dados
     - No terminal do XAMPP aperte no botão "Admin" na coluna da opção "MySQL";
     - Dentro do phpMyAdmin, crie uma base de dados com o nome que desejar;
     - Dentro da pasta "backend" acesse o arquivo ".env", e renomeie o valor de "DB_DATABASE" passando o nome daquele que você criou;
-    - (imagem/bancoDeDados.png) 
+    - <img src="./imagens/bancoDeDados.png" alt="Banco de Dados Bonito" width="200"/>
     
  - Inicie o sistema:
 
@@ -81,8 +59,15 @@ A aplicação deve ter as seguintes funcionalidades:
 ---
 
   # Um pouco sobre minha experiência
-Foi um grande desafio pra mim, já que eu nunca tinha entrado em contato com PHP, Laravel e Vue.js. Eu já tinha visto alguns conteúdos sobre essas tecnologias mas nada algo muito profundo como foi nesse projeto. Tive que me organizar de forma a poder conseguir estudar o básico para conseguir pelo menos entregar um projeto funcional. Então dividi meus 3 primeiros dias para estudar as tecnologias que não conhecia profundamente (separei um dia pra cada). E depois foquei no desenvolvimento do projeto mesmo, pesquisando bastante até encontrar a solução de um problema que havia encontrado, ou para poder terminar alguma funcionalidade que não tinha muita noção de como implementar.
+Foi um grande desafio pra mim, já que eu nunca tinha entrado em contato com PHP, Laravel e Vue.js. Eu já tinha visto alguns conteúdos sobre essas tecnologias mas nada algo muito profundo como foi nesse projeto. Tive que me organizar de forma a poder conseguir estudar o básico para conseguir pelo menos entregar um projeto funcional. 
+
+Então dividi meus 3 primeiros dias para estudar as tecnologias que não conhecia profundamente (separei um dia pra cada). E depois foquei no desenvolvimento do projeto mesmo, pesquisando bastante até encontrar a solução de um problema que havia encontrado, ou para poder terminar alguma funcionalidade que não tinha muita noção de como implementar.
+
+Sobre os diferenciais, quase consegui fazer todos eles. Quase consegui concluir a autenticação, já que no curso que vi sobre Laravel eu escutei sobre o "Laravel Jetstream". Mas como deixei essa funcionalidade pro final do projeto, acabei que não tive todo o tempo necessário pra poder me dedicar a construir ela (principalmente o tempo para solucionar os problemas que poderiam ser causados se eu instalasse essa ferramenta).
 
 Eu já escutei que as principais habilidades de um programador são: resolução de problemas, criatividade, comunicação e resiliência. Acho que pude provar pra mim mesmo que eu possuo essas habilidades, além de poder ter melhorado elas durante esse projeto; porque como falei, foi um dos maiores desafios que já fiz em relação à programação. Mas eu também fico animado porque penso no que eu posso fazer, tendo em vista esse desafio que terminei (saindo praticamente do zero), nesse pouco período de tempo. 
 
 E também queria agradecer pela oportunidade de participar desse processo.
+
+
+

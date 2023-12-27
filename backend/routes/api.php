@@ -22,4 +22,3 @@ Route::get('receitas/{id}', [ReceitaController::class, 'show']);
 Route::get('receitas/{id}/edit', [ReceitaController::class, 'edit']);
 Route::put('receitas/{id}/edit', [ReceitaController::class, 'update']);
 Route::delete('receitas/{id}/delete', [ReceitaController::class, 'destroy']);
-

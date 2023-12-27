@@ -9,16 +9,12 @@ class Ingrediente extends Model
 {
     use HasFactory;
 
-    protected $table = "ingredientes"; 
+    protected $table = "ingredientes";
 
     protected $fillable = [
         'codigo',
         'descricao'
     ];
-
-    // public function receitas(){
-    //     return $this->belongsToMany('App\Models\Receita');
-    // }
 
     public function receitas()
     {
@@ -26,5 +22,4 @@ class Ingrediente extends Model
             ->withPivot('ordem', 'quantidade_prevista')
             ->withTimestamps();
     }
-
 }
